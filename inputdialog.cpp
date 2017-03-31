@@ -3,6 +3,7 @@
 #include "eventfilter.h"
 
 #include <QGraphicsDropShadowEffect>
+#include <QPropertyAnimation>
 
 InputDialog::InputDialog(QWidget *parent) :
     QDialog(parent),
@@ -22,10 +23,16 @@ InputDialog::InputDialog(QWidget *parent) :
 
     auto addDropShadow = [] (QWidget* widget) {
         QGraphicsDropShadowEffect* effect = new QGraphicsDropShadowEffect();
-        effect->setBlurRadius(20);
         effect->setOffset(0);
         effect->setColor(QColor(112, 181, 245));
         widget->setGraphicsEffect(effect);
+
+        QPropertyAnimation* anim = new QPropertyAnimation(effect, "blurRadius");
+        anim->setDuration(500);
+        anim->setEasingCurve(QEasingCurve::OutCubic);
+        anim->setStartValue(0);
+        anim->setEndValue(20);
+        anim->start(QAbstractAnimation::DeleteWhenStopped);
     };
 
     auto removeDropShadow = [] (QWidget* widget) {
