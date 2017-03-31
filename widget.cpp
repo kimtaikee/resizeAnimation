@@ -13,6 +13,8 @@
 #include "tableselectionanimation.h"
 #include "lednumberanimation.h"
 #include "slidemenuanimation.h"
+#include "shadowwindow.h"
+#include "inputdialog.h"
 
 #include <QPainter>
 #include <QPropertyAnimation>
@@ -534,4 +536,16 @@ void Widget::on_slideMenuButton_clicked()
 {
     SlideMenuAnimation* sma = new SlideMenuAnimation;
     sma->show();
+}
+
+void Widget::on_shadowWindowButton_clicked()
+{
+    ShadowWindow* sw = new ShadowWindow;
+    sw->show();
+}
+
+void Widget::on_inputButton_clicked()
+{
+    InputDialog* inputDlg = new InputDialog;
+    inputDlg->show();
 }

@@ -471,6 +471,20 @@
        </property>
       </widget>
      </item>
+     <item row="3" column="2">
+      <widget class="QPushButton" name="shadowWindowButton">
+       <property name="text">
+        <string>Shadow Window</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="2">
+      <widget class="QPushButton" name="inputButton">
+       <property name="text">
+        <string>Input</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
   </layout>

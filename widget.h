@@ -58,6 +58,8 @@ private slots:
     void on_tableSelectionButton_clicked();
     void on_ledDisplayButton_clicked();
     void on_slideMenuButton_clicked();
+    void on_shadowWindowButton_clicked();
+    void on_inputButton_clicked();
 
 private:
     Ui::Widget *m_ui;

@@ -28,7 +28,10 @@ HEADERS += widget.h \
     ledunit.h \
     lednumber.h \
     lednumberanimation.h \
-    slidemenuanimation.h
+    slidemenuanimation.h \
+    shadowwindow.h \
+    inputdialog.h \
+    eventfilter.h
 
 FORMS += widget.ui \
     scrollanimationwindow.ui \
@@ -39,7 +42,8 @@ FORMS += widget.ui \
     tstflowlayout.ui \
     explodeanimation.ui \
     tableselectionanimation.ui \
-    lednumberanimation.ui
+    lednumberanimation.ui \
+    inputdialog.ui
 
 SOURCES += main.cpp widget.cpp \
     scrollanimationwindow.cpp \
@@ -64,7 +68,10 @@ SOURCES += main.cpp widget.cpp \
     ledunit.cpp \
     lednumber.cpp \
     lednumberanimation.cpp \
-    slidemenuanimation.cpp
+    slidemenuanimation.cpp \
+    shadowwindow.cpp \
+    inputdialog.cpp \
+    eventfilter.cpp
 
 LIBS += user32.lib
 
