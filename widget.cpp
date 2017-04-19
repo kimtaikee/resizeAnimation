@@ -15,6 +15,7 @@
 #include "slidemenuanimation.h"
 #include "shadowwindow.h"
 #include "inputdialog.h"
+#include "circle.h"
 
 #include <QPainter>
 #include <QPropertyAnimation>
@@ -23,6 +24,7 @@
 #include <QSequentialAnimationGroup>
 #include <QTimer>
 #include <QDesktopWidget>
+#include <QTime>
 
 #ifdef Q_OS_WIN
 #include <windows.h>
@@ -91,6 +93,12 @@ void Widget::flyOut()
 QSize Widget::sizeHint() const
 {
     return QSize(300, 500);
+}
+
+void Widget::closeEvent(QCloseEvent* e)
+{
+    m_keepRaining = false;
+    QWidget::close();
 }
 
 void Widget::on_resizeButton_clicked()
@@ -548,4 +556,58 @@ void Widget::on_inputButton_clicked()
 {
     InputDialog* inputDlg = new InputDialog;
     inputDlg->show();
+}
+
+void Widget::on_rainButton_toggled(bool checked)
+{
+    m_keepRaining = checked;
+    makeItRain();
+}
+
+void delay(int millisecondsToWait)
+{
+    QTime dieTime = QTime::currentTime().addMSecs( millisecondsToWait );
+    while( QTime::currentTime() < dieTime )
+        QCoreApplication::processEvents( QEventLoop::AllEvents, 100 );
+}
+
+void Widget::makeItRain()
+{
+    QDesktopWidget desktop;
+    int desktopWidth = desktop.screen()->width();
+    int desktopHeight = desktop.screen()->height();
+
+    QPoint randomPos;
+    while (m_keepRaining) {
+        randomPos = QPoint(qrand() % desktopWidth, qrand() % desktopHeight);
+
+        Circle* circle = new Circle();
+        circle->move(randomPos);
+        circle->show();
+
+//#define RAINBOW_RAIN
+#ifdef RAINBOW_RAIN
+        circle->setColor(QColor(qrand() % 255, qrand() % 255, qrand() % 255));
+#endif
+
+        QPropertyAnimation* radiusAnim = new QPropertyAnimation(circle, "radius");
+        radiusAnim->setEasingCurve(QEasingCurve::Linear);
+        radiusAnim->setDuration(1000);
+        radiusAnim->setStartValue(1);
+        radiusAnim->setEndValue(80);
+
+        QPropertyAnimation* opacityAnim = new QPropertyAnimation(circle, "windowOpacity");
+        opacityAnim->setEasingCurve(QEasingCurve::Linear);
+        opacityAnim->setDuration(1000);
+        opacityAnim->setStartValue(1);
+        opacityAnim->setEndValue(0);
+
+        QParallelAnimationGroup* animGroup = new QParallelAnimationGroup();
+        animGroup->addAnimation(radiusAnim);
+        animGroup->addAnimation(opacityAnim);
+        animGroup->start(QAbstractAnimation::DeleteWhenStopped);
+        connect(animGroup, &QAbstractAnimation::finished, circle, &QWidget::deleteLater);
+
+        delay(10);
+    }
 }

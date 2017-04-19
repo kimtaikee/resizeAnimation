@@ -31,7 +31,8 @@ HEADERS += widget.h \
     slidemenuanimation.h \
     shadowwindow.h \
     inputdialog.h \
-    eventfilter.h
+    eventfilter.h \
+    circle.h
 
 FORMS += widget.ui \
     scrollanimationwindow.ui \
@@ -71,7 +72,8 @@ SOURCES += main.cpp widget.cpp \
     slidemenuanimation.cpp \
     shadowwindow.cpp \
     inputdialog.cpp \
-    eventfilter.cpp
+    eventfilter.cpp \
+    circle.cpp
 
 LIBS += user32.lib
 

@@ -27,6 +27,7 @@ public slots:
 
 protected:
     QSize sizeHint() const;
+    void closeEvent(QCloseEvent* e);
 
 private slots:
     void on_resizeButton_clicked();
@@ -60,6 +61,10 @@ private slots:
     void on_slideMenuButton_clicked();
     void on_shadowWindowButton_clicked();
     void on_inputButton_clicked();
+    void on_rainButton_toggled(bool checked);
+
+private:
+    void makeItRain();
 
 private:
     Ui::Widget *m_ui;
@@ -70,6 +75,7 @@ private:
     bool m_fliping = false;
     QLabel* m_flipLabel = nullptr;
     ColorBall* m_colorBall = nullptr;
+    bool m_keepRaining = false;
 };
 
 #endif // WIDGET_H
