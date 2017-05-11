@@ -32,7 +32,8 @@ HEADERS += widget.h \
     shadowwindow.h \
     inputdialog.h \
     eventfilter.h \
-    circle.h
+    circle.h \
+    flyawayanimation.h
 
 FORMS += widget.ui \
     scrollanimationwindow.ui \
@@ -44,7 +45,8 @@ FORMS += widget.ui \
     explodeanimation.ui \
     tableselectionanimation.ui \
     lednumberanimation.ui \
-    inputdialog.ui
+    inputdialog.ui \
+    flyawayanimation.ui
 
 SOURCES += main.cpp widget.cpp \
     scrollanimationwindow.cpp \
@@ -73,9 +75,10 @@ SOURCES += main.cpp widget.cpp \
     shadowwindow.cpp \
     inputdialog.cpp \
     eventfilter.cpp \
-    circle.cpp
+    circle.cpp \
+    flyawayanimation.cpp
 
-LIBS += user32.lib
+LIBS += user32.lib gdi32.lib
 
 RESOURCES += \
     images.qrc

@@ -16,6 +16,7 @@
 #include "shadowwindow.h"
 #include "inputdialog.h"
 #include "circle.h"
+#include "flyawayanimation.h"
 
 #include <QPainter>
 #include <QPropertyAnimation>
@@ -610,4 +611,10 @@ void Widget::makeItRain()
 
         delay(10);
     }
+}
+
+void Widget::on_flyAwayButton_clicked()
+{
+    FlyAwayAnimation* faa = new FlyAwayAnimation;
+    faa->show();
 }

@@ -63,6 +63,8 @@ private slots:
     void on_inputButton_clicked();
     void on_rainButton_toggled(bool checked);
 
+    void on_flyAwayButton_clicked();
+
 private:
     void makeItRain();
 
