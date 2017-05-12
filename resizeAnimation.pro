@@ -33,7 +33,8 @@ HEADERS += widget.h \
     inputdialog.h \
     eventfilter.h \
     circle.h \
-    flyawayanimation.h
+    flyawayanimation.h \
+    highlighwindow.h
 
 FORMS += widget.ui \
     scrollanimationwindow.ui \
@@ -76,7 +77,8 @@ SOURCES += main.cpp widget.cpp \
     inputdialog.cpp \
     eventfilter.cpp \
     circle.cpp \
-    flyawayanimation.cpp
+    flyawayanimation.cpp \
+    highlighwindow.cpp
 
 LIBS += user32.lib gdi32.lib
 

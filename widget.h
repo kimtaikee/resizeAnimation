@@ -65,6 +65,8 @@ private slots:
 
     void on_flyAwayButton_clicked();
 
+    void on_highlightWindowButton_clicked();
+
 private:
     void makeItRain();
 

@@ -17,6 +17,7 @@
 #include "inputdialog.h"
 #include "circle.h"
 #include "flyawayanimation.h"
+#include "highlighwindow.h"
 
 #include <QPainter>
 #include <QPropertyAnimation>
@@ -617,4 +618,13 @@ void Widget::on_flyAwayButton_clicked()
 {
     FlyAwayAnimation* faa = new FlyAwayAnimation;
     faa->show();
+}
+
+void Widget::on_highlightWindowButton_clicked()
+{
+    static HighlighWindow* sHw = nullptr;
+    if (!sHw) {
+        sHw = new HighlighWindow(this);
+    }
+    sHw->show();
 }
